@@ -2,10 +2,6 @@ import pytesseract
 import cv2 as cv
 
 
-tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
-pytesseract.pytesseract.tesseract_cmd = tesseractFile
-
-
 def imgToText(img):
     # Function untuk memasukkan path folder image dan akan menghasilkan text
     # Reading image
@@ -24,9 +20,9 @@ def imgToText(img):
     cv.imshow('Hasil', thresh)
     cv.waitKey(0)
 
-    # Tesseract process
-    # text = pytesseract.image_to_string(thresh, lang='eng')
-    # return text
+    #Tesseract process
+    text = pytesseract.image_to_string(thresh, lang='eng')
+    return text
 
 def main():
     cam = cv.VideoCapture(0)

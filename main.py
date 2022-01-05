@@ -26,6 +26,7 @@ def imgToText(img):
     return textOCR
 
 def main():
+
     cam = cv.VideoCapture(0)
 
     cv.namedWindow("Text Capture")

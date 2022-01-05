@@ -2,6 +2,7 @@ import pytesseract
 import cv2 as cv
 
 
+
 def imgToText(img):
     # Function untuk memasukkan path folder image dan akan menghasilkan text
     # Reading image
@@ -21,13 +22,14 @@ def imgToText(img):
     cv.waitKey(0)
 
     #Tesseract process
-    text = pytesseract.image_to_string(thresh, lang='eng')
-    return text
+    textOCR = pytesseract.image_to_string(thresh, lang='eng')
+    return textOCR
 
 def main():
     cam = cv.VideoCapture(0)
 
     cv.namedWindow("Text Capture")
+    counter = 0
 
     while True:
         ret, frame = cam.read()
@@ -42,11 +44,13 @@ def main():
             break
 
         if k % 256 == 32:  # SPACE pressed
-            img_name = "gambar_.jpg"
+            img_name = "gambar_{}.jpg".format(counter)
             cv.imwrite(img_name, frame)
             print("{} written.".format(img_name))
-            text = imgToText(img_name)
-            print(text)
+            textOCR = imgToText(img_name)
+            with open("Output_{}.txt".format(counter), "w") as text_file:
+                print(textOCR, file=text_file)
+            counter += 1
     cam.release()
     cv.destroyAllWindows()
 

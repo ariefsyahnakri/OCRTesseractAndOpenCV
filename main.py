@@ -1,10 +1,10 @@
 import pytesseract
 import cv2 as cv
 
-
+tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = tesseractFile
 
 def imgToText(img):
-    # Function untuk memasukkan path folder image dan akan menghasilkan text
     # Reading image
     img = cv.imread(img)
 
@@ -49,7 +49,7 @@ def main():
             cv.imwrite(img_name, frame)
             print("{} written.".format(img_name))
             textOCR = imgToText(img_name)
-            with open("Output_{}.txt".format(counter), "w") as text_file:
+            with open("Output_{}.txt".format(counter), "w+") as text_file:
                 print(textOCR, file=text_file)
             counter += 1
     cam.release()

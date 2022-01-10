@@ -28,7 +28,6 @@ def imgToText(img):
 def main():
 
     cam = cv.VideoCapture(0)
-
     cv.namedWindow("Text Capture")
     counter = 0
 

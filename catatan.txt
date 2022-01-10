@@ -1,0 +1,12 @@
+Catatan 10/01/2021
+
+Apa yang sudah dilakukan:
+1. Nyobain nilai-nilai yang bakal dimasukin untuk image preprocessing
+2.
+
+Hasil:
+1. Image preprocessing udah oke tapi masih masalah di kualitas hasil kamera
+
+Apa yang harus diperbaiki:
+1. Lampu untuk di scannernya harus sama rata semua, kalau engga nanti thresholdingnya jadi jelek
+2. Coba atur fokus dari kameranya

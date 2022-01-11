@@ -39,6 +39,15 @@ def recorder(myPoints):
 
     return myPointsNew
 
+def drawRectangle(img,biggest,thickness):
+    cv.line(img, (biggest[0][0][0], biggest[0][0][1]), (biggest[1][0][0], biggest[1][0][1]), (0, 255, 0), thickness)
+    cv.line(img, (biggest[0][0][0], biggest[0][0][1]), (biggest[2][0][0], biggest[2][0][1]), (0, 255, 0), thickness)
+    cv.line(img, (biggest[3][0][0], biggest[3][0][1]), (biggest[2][0][0], biggest[2][0][1]), (0, 255, 0), thickness)
+    cv.line(img, (biggest[3][0][0], biggest[3][0][1]), (biggest[1][0][0], biggest[1][0][1]), (0, 255, 0), thickness)
+    cv.putText(img, 'Objek ditemukan!', (biggest[0][0][0], (biggest[0][0][1])-10), cv.FONT_HERSHEY_COMPLEX, 0.5, (0, 255, 0), 1)
+    return img
+
+
 def contourRecord():
     cam = cv.VideoCapture(0)
 
@@ -58,16 +67,9 @@ def contourRecord():
             biggest = recorder(biggest)
             cv.drawContours(frame, biggest, -1, (0, 255, 0), 10)
             result = drawRectangle(frame, biggest, 5)
-            try:
-                cv.imshow("Hasil", result)
-            except Exception as e:
-                print(str(e))
+            cv.imshow("Hasil", result)
         else:
             cv.imshow("Hasil", frame)
-
-
-
-
 
         key = cv.waitKey(1)
         if key % 256 == 27:  # ESC pressed

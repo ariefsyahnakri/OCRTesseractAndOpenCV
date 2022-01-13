@@ -43,8 +43,8 @@ def take_copy(im):
 def select_img():
     global rgb
     _, img = cap.read()
-    img = cv2.resize(img, (w, h))
-    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    rgb = cv2.resize(img, (w, h))
+    #rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     image = Image.fromarray(rgb)
     imgtk = ImageTk.PhotoImage(image)
     v.configure(image=imgtk)

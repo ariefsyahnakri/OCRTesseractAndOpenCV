@@ -48,10 +48,12 @@ def drawRectangle(img,biggest,thickness):
     return img
 
 
-def contourRecord():
+def contourRecord(path):
     cam = cv.VideoCapture(0)
+    i = 0
 
     while True:
+
         check, frame = cam.read()
         imgGray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
         gaussianFilter = cv.GaussianBlur(imgGray, (3,3), 10)
@@ -62,12 +64,19 @@ def contourRecord():
 
         ## FIND THE BIGGEST CONTOUR
         biggest, maxArea = biggestContour(contours)
-        print(biggest)
+        #print(biggest)
         if biggest.size != 0 :
             biggest = recorder(biggest)
             cv.drawContours(frame, biggest, -1, (0, 255, 0), 10)
-            result = drawRectangle(frame, biggest, 5)
-            cv.imshow("Hasil", result)
+            contours = drawRectangle(frame, biggest, 5)
+            cv.imshow("Hasil", contours)
+            pts1 = np.float32(biggest)
+            pts2 = np.float32([[0, 0],[widthImg, 0], [0, heightImg],[widthImg, heightImg]])
+            matrix = cv.getPerspectiveTransform(pts1,pts2)
+            wrapped = cv.warpPerspective(contours, matrix, (widthImg,heightImg))
+            wrapped = wrapped[20:wrapped.shape[0] - 20, 20:wrapped.shape[1] - 20]
+            #wrapped = cv.resize(wrapped,(widthImg,heightImg))
+
         else:
             cv.imshow("Hasil", frame)
 
@@ -76,6 +85,13 @@ def contourRecord():
             print("Escape hit, closing...")
             cam.release()
             break
+        if key % 256 == 32:  # SPACE pressed
+            imgName = "{}/gambarWrapped_{}.jpg".format(path, i)
+            cv.imwrite(imgName, wrapped)
+            print("{} written.".format(imgName))
+            i += 1
+
+
 
 def contourImage(img):
     scale_percent = 100
@@ -105,6 +121,6 @@ def contourImage(img):
     cv.destroyAllWindows()
 
 if __name__ == "__main__":
-    path = 'picts/raspi.jpg'
-    contourRecord()
+    path = 'picts'
+    contourRecord(path)
     #contourImage(path)

@@ -21,6 +21,7 @@ def biggestContour(contours):
                 max_area = area
     return biggest, max_area
 
+
 def recorder(myPoints):
     myPoints = myPoints.reshape((4,2))
     myPointsNew = np.zeros((4, 1, 2), dtype=np.int32)
@@ -31,7 +32,6 @@ def recorder(myPoints):
     diff = np.diff(myPoints, axis=1)
     myPointsNew[1] = myPoints[np.argmin(diff)]
     myPointsNew[2] = myPoints[np.argmax(diff)]
-
     return myPointsNew
 
 def drawRectangle(img,biggest,thickness):
@@ -75,7 +75,7 @@ def select_img(img):
 
 def take_copy(im):
     la = Label(frame_2, width=w-100, height=h-100)
-    la.place(x=10, y=370)
+    la.place(x=10, y=h-10)
     copy = im.copy()
     img = cv.resize(copy, (w-100, h-100))
     image = Image.fromarray(copy)
@@ -104,8 +104,8 @@ def main():
     win.geometry("%dx%d" % (widthScreen, heightScreen))
     win.resizable(False, False)
     win.configure(bg='#1b407a')
-    w = 640
-    h = 480
+    w = 400
+    h = int(heightScreen/2)
     color = "#581845"
     frame_1 = Frame(win, width=widthScreen, height=heightScreen/2, bg=color).place(x=0, y=0)
     frame_2 = Frame(win, width=widthScreen, height=heightScreen/2, bg=color).place(x=0, y=350)

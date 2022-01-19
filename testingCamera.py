@@ -97,6 +97,8 @@ def contourImage(img):
     scale_percent = 100
 
     img = cv.imread(img)
+    cv.imshow("Hasil", img)
+    cv.waitKey(0)
     width = int(img.shape[1] * scale_percent / 100)
     height = int(img.shape[0] * scale_percent / 100)
     dim = (width,height)
@@ -121,6 +123,6 @@ def contourImage(img):
     cv.destroyAllWindows()
 
 if __name__ == "__main__":
-    path = 'picts'
-    contourRecord(path)
-    #contourImage(path)
+    path = 'picts/img1.jpg'
+    #contourRecord(path)
+    contourImage(path)

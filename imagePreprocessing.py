@@ -1,42 +1,139 @@
-import cv2 as cv
-import utils
+import cv2
+import numpy as np
+import pytesseract
 
-#print(cv.__version__)
+tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = tesseractFile
 
-def nothing(x):
-    return x
+def stackImages(imgArray,scale,lables=[]):
+    rows = len(imgArray)
+    cols = len(imgArray[0])
+    rowsAvailable = isinstance(imgArray[0], list)
+    width = imgArray[0][0].shape[1]
+    height = imgArray[0][0].shape[0]
+    if rowsAvailable:
+        for x in range(0, rows):
+            for y in range(0, cols):
+                imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
+                if len(imgArray[x][y].shape) == 2: imgArray[x][y] = cv2.cvtColor(imgArray[x][y], cv2.COLOR_GRAY2BGR)
+        imageBlank = np.zeros((height, width, 3), np.uint8)
+        hor = [imageBlank] * rows
+        hor_con = [imageBlank] * rows
+        for x in range(0, rows):
+            hor[x] = np.hstack(imgArray[x])
+            hor_con[x] = np.concatenate(imgArray[x])
+        ver = np.vstack(hor)
+        ver_con = np.concatenate(hor)
+    else:
+        for x in range(0, rows):
+            imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
+            if len(imgArray[x].shape) == 2: imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
+        hor = np.hstack(imgArray)
+        hor_con = np.concatenate(imgArray)
+        ver = hor
+    if len(lables) != 0:
+        eachImgWidth = int(ver.shape[1] / cols)
+        eachImgHeight = int(ver.shape[0] / rows)
+        print(eachImgHeight)
+        for d in range(0, rows):
+            for c in range(0, cols):
+                cv2.rectangle(ver, (c * eachImgWidth, eachImgHeight * d),
+                              (c * eachImgWidth + len(lables[d][c]) * 13 + 27, 30 + eachImgHeight * d), (255, 255, 255),
+                              cv2.FILLED)
+                cv2.putText(ver, lables[d][c], (eachImgWidth * c + 10, eachImgHeight * d + 20),
+                            cv2.FONT_HERSHEY_COMPLEX, 0.7, (255, 0, 255), 2)
+    return ver
 
-def imagePreprocessing(path, thres1, thres2):
-    img = cv.imread(path)
-    img = cv.rotate(img, cv.ROTATE_90_CLOCKWISE)
-    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    blur = cv.GaussianBlur(grey,(3,3),cv.BORDER_DEFAULT)
-    sharp = cv.addWeighted(grey, 1+1.5, blur, -1.5, 0)
-    #ret, thresh = cv.threshold(sharp, thres1, thres2, cv.THRESH_BINARY + cv.THRESH_OTSU)
-    return sharp
+
+def recorder(myPoints):
+    myPoints = myPoints.reshape((4, 2))
+    myPointsNew = np.zeros((4, 1, 2), dtype=np.int32)
+    add = myPoints.sum(1)
+
+    myPointsNew[0] = myPoints[np.argmin(add)]
+    myPointsNew[3] = myPoints[np.argmax(add)]
+    diff = np.diff(myPoints, axis=1)
+    myPointsNew[1] = myPoints[np.argmin(diff)]
+    myPointsNew[2] = myPoints[np.argmax(diff)]
+    return myPointsNew
+
+
+def biggestContour(contours):
+    biggest = np.array([])
+    max_area = 0
+    for i in contours:
+        area = cv2.contourArea(i)
+        if area > 5000:
+            peri = cv2.arcLength(i, True)
+            approx = cv2.approxPolyDP(i, 0.02 * peri, True)
+            if area > max_area and len(approx) == 4:
+                biggest = approx
+                max_area = area
+    return biggest, max_area
+
+def drawRectangle(img, biggest, thickness):
+    cv2.line(img, (biggest[0][0][0], biggest[0][0][1]), (biggest[1][0][0], biggest[1][0][1]), (0, 255, 0), thickness)
+    cv2.line(img, (biggest[0][0][0], biggest[0][0][1]), (biggest[2][0][0], biggest[2][0][1]), (0, 255, 0), thickness)
+    cv2.line(img, (biggest[3][0][0], biggest[3][0][1]), (biggest[2][0][0], biggest[2][0][1]), (0, 255, 0), thickness)
+    cv2.line(img, (biggest[3][0][0], biggest[3][0][1]), (biggest[1][0][0], biggest[1][0][1]), (0, 255, 0), thickness)
+    return img
+
+
+def main():
+    heightImg = 640
+    widthImg = 480
+    imgBlank = np.zeros((heightImg, widthImg, 3), np.uint8)
+
+
+    path = "picts/opencv_frame_22.png"
+    img = cv2.imread(path)
+    img = cv2.resize(img,(widthImg,heightImg))
+
+    imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    imgBlur = cv2.GaussianBlur(imgGrey,(21,21),10) ## Gaussian Filter
+    imgSharp = cv2.addWeighted(imgGrey, 2.0, imgBlur, -1.0, 0)
+
+    ret, imgThres = cv2.threshold(imgSharp,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+
+    ## FIND CONTOURS
+
+
+    imgBigContour = img.copy()
+    contours, hierarchy = cv2.findContours(imgThres,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+
+    biggest, maxArea = biggestContour(contours)
+    print(biggest)
+    if biggest.size != 0:
+        biggest = recorder(biggest)
+        cv2.drawContours(imgBigContour,biggest,-1, (0,255,0),20)
+        imgBigContour = drawRectangle(imgBigContour,biggest,2)
+        pts1 = np.float32(biggest)
+        pts2 = np.float32([[0, 0],[widthImg, 0], [0, heightImg],[widthImg, heightImg]])
+        matrix = cv2.getPerspectiveTransform(pts1,pts2)
+        imgWarpColored = cv2.warpPerspective(img, matrix,(widthImg,heightImg))
+
+
+    imgDilated = cv2.dilate(imgWarpColored,None,iterations=2)
+
+
+
+
+    imageArray = ([img, imgGrey,imgBlur,imgSharp],[imgThres,imgBigContour,imgWarpColored,imgDilated])
+
+    lables = [["Original", "Gray", "Gaussian Filter", "Image Sharping"],
+              ["Image Sharping","Image Big Contour","Warp Colored","Dilated"]]
+
+    stackedImage = stackImages(imageArray,0.75,lables)
+
+    textOCR = pytesseract.image_to_string(imgThres, lang='eng')
+    #print("Hasil OCR:  {}".format(textOCR))
+
+    cv2.imshow("Hasil",stackedImage)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    path = 'picts/raspi.jpg'
-    img = cv.imread(path)
-
-    cv.namedWindow('Result')
-
-    cv.createTrackbar("Thres1", "Result", 0, 255, nothing)
-    cv.createTrackbar("Thres2", "Result", 0, 255, nothing)
-
-    #thres = utils.initializeTrackbars(0)
-    while True:
-        cv.imshow('Result', img)
-
-        thres1 = cv.getTrackbarPos("Thres1", "Result")
-        thres2 = cv.getTrackbarPos("Thres2", "Result")
-
-        img = imagePreprocessing(path, thres1, thres2)
+    main()
 
 
-        k = cv.waitKey(1)
-        if k % 256 == 27:  # ESC pressed
-            print("Escape hit, closing...")
-            break
-
-    cv.destroyAllWindows()

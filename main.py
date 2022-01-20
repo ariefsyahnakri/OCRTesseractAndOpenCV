@@ -1,10 +1,11 @@
 import pytesseract
+import tkinter as tk 
 from tkinter import*
 from PIL import Image, ImageTk
 from tkinter import filedialog
 import cv2 as cv
 import numpy as np
-import datetime
+from datetime import date,datetime
 
 #tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
 #pytesseract.pytesseract.tesseract_cmd = tesseractFile
@@ -46,15 +47,16 @@ def drawRectangle(img,biggest,thickness):
 
 def imgToText(img):
     now = datetime.now()
-    imgFile = now.strftime("Gambar %d/%m/%Y %H:%M:%S").replace(":", "-") + ".jpg"
+    imgFile = now.strftime("Gambar %d/%m/%Y %H:%M:%S").replace(":", "-") + ".png"
     txtFile = now.strftime("Text %d/%m/%Y %H:%M:%S").replace(":", "-") + ".txt"
-
+    cv.imwrite(imgFile,img)
+    print("{} written".format(imgFile))
 
     # Reading image
-    img = cv.imread(img)
+    img = cv.imread(imgFile)
 
     # Color2Gray process
-    imgGrey = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+    imgGrey = cv.cvtColor(img,cv.COLOR_RGB2GRAY)
 
     # Unsharp masking process
     gaussianFilter = cv.GaussianBlur(imgGrey, (11,11), 10)
@@ -80,10 +82,17 @@ def imgToText(img):
                 cv.putText(img, b[11], (x, y), cv.FONT_HERSHEY_COMPLEX, 1, (50, 50, 255), 2)
 
 
+    cv.imshow('Hasil',thresh)
+    cv.waitKey(0)
+    cv.destroyAllWindows
+
 
     cv.imwrite(imgFile,thresh)
+    print("{} written".format(imgFile))
+
     with open(txtFile, 'w+') as f:
         f.write(textOCR)
+        print("{} written".format(txtFile))
 
 
 
@@ -94,11 +103,11 @@ def select_img(img):
     imgtk = ImageTk.PhotoImage(image)
     L1.configure(image=imgtk)
     L1.image = imgtk
-    L1.after(10, select_img)
+    #L1.after(10, select_img)
 
 
 def main():
-    global f1, L1
+    global f1, L1,wrapped
     win = Tk()
     widthScreen = win.winfo_screenwidth()
     heightScreen = win.winfo_screenheight()
@@ -110,8 +119,6 @@ def main():
     L1 = Label(f1, width=widthScreen-150, height=heightScreen-150)
     L1.place(x=60, y=0)
 
-    snap = Button(win, text='Capture', command=lambda : imgToText(wrapped))
-    snap.place(x=600, y=700, width=300, height=50)
 
     cam = cv.VideoCapture(0)
 
@@ -119,13 +126,15 @@ def main():
 
     while True:
         ret, img = cam.read()
+        img=cv.transpose(img)
+        img=cv.flip(img,flipCode=0)
         rgb = cv.cvtColor(img,cv.COLOR_BGR2RGB)
         imgGray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
         gaussianFilter = cv.GaussianBlur(imgGray, (3, 3), 10)
         unsharpMasking = cv.addWeighted(imgGray, 1 + 1.5, gaussianFilter, -1.5, 0)
         ret, thresh = cv.threshold(unsharpMasking, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
         contours, hierarchy = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
-
+    
 
         w,h = 480,640
         # Finding biggest contour
@@ -142,7 +151,19 @@ def main():
         else:
             rgb = rgb.copy()
 
-        select_img(rgb)
+        
+
+
+
+        try:
+            select_img(rgb)
+        except Exception:
+            pass
+        btn = Button(win, text="Capture", command=lambda: imgToText(wrapped))
+        btn.place(x=450, y=150)
+        
+
+
         win.update()
 
 

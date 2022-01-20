@@ -79,7 +79,7 @@ def drawRectangle(img, biggest, thickness):
     return img
 
 
-def main():
+def image():
     heightImg = 640
     widthImg = 480
     imgBlank = np.zeros((heightImg, widthImg, 3), np.uint8)
@@ -132,8 +132,59 @@ def main():
     cv2.imshow("Hasil",stackedImage)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    
+
+def camera():
+        cam = cv2.VideoCapture(0)
+        cv2.namedWindow("test")
+        img_counter=0
+
+        while True:
+            red, img = cam.read()
+            img=cv2.transpose(img)
+            img=cv2.flip(img,flipCode=0)
+            rgb = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+            imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            gaussianFilter = cv2.GaussianBlur(imgGray, (3, 3), 10)
+            unsharpMasking = cv2.addWeighted(imgGray, 1 + 1.5, gaussianFilter, -1.5, 0)
+            ret, thresh = cv2.threshold(unsharpMasking, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+            contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+
+            w,h = 480,640
+            # Finding biggest contour
+            biggest, maxArea = biggestContour(contours)
+            if biggest.size != 0:
+                biggest = recorder(biggest)
+                cv2.drawContours(rgb, biggest, -1, (0, 255, 0), 10)
+                rgb = drawRectangle(rgb, biggest, 5)
+                pts1 = np.float32(biggest)
+                pts2 = np.float32([[0, 0], [w, 0], [0, h], [w, h]])
+                matrix = cv2.getPerspectiveTransform(pts1, pts2)
+                wrapped = cv2.warpPerspective(rgb, matrix, (w, h))
+                wrapped = wrapped[20:wrapped.shape[0] - 20, 20:wrapped.shape[1] - 20]
+            else:
+                rgb = rgb.copy()
+
+            cv2.imshow("test", rgb)
+
+
+            k = cv2.waitKey(1)
+            if k%256 == 27:
+                # ESC pressed
+                print("Escape hit, closing...")
+                break
+            elif k%256 == 32:
+                # SPACE pressed
+                img_name = "opencv_frame_{}.png".format(img_counter)
+                cv2.imwrite(img_name, wrapped)
+                print("{} written!".format(img_name))
+                img_counter += 1
+
+
 
 if __name__ == "__main__":
-    main()
+    #image()
+    camera()
 
 

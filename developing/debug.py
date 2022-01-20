@@ -1,8 +1,7 @@
-num = 10
+from datetime import date,datetime
 
-# check  and print type of num variable
-print(type(num))
+now = datetime.now()
+text = now.strftime("Gambar %d/%m/%Y %H:%M:%S").replace(":","-")+ ".jpg"
 
-# convert the num into string and print
-converted_num = "{}".format(num)
-print(type(converted_num))
+
+print(text)

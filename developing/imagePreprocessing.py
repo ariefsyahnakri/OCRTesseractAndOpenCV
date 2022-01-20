@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 import pytesseract
 
-tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
-pytesseract.pytesseract.tesseract_cmd = tesseractFile
+#tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
+#pytesseract.pytesseract.tesseract_cmd = tesseractFile
 
 def stackImages(imgArray,scale,lables=[]):
     rows = len(imgArray)
@@ -85,7 +85,7 @@ def main():
     imgBlank = np.zeros((heightImg, widthImg, 3), np.uint8)
 
 
-    path = "picts/opencv_frame_22.png"
+    path = "/home/pi/Documents/arief/github/OCRTesseractAndOpenCV/picts/opencv_frame_22.png"
     img = cv2.imread(path)
     img = cv2.resize(img,(widthImg,heightImg))
 

@@ -5,8 +5,8 @@ from tkinter import filedialog
 import cv2 as cv
 import numpy as np
 
-tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
-pytesseract.pytesseract.tesseract_cmd = tesseractFile
+#tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
+#pytesseract.pytesseract.tesseract_cmd = tesseractFile
 
 def biggestContour(contours):
     biggest = np.array([])

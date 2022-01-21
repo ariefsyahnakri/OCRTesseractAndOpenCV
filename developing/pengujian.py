@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 #tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
 #pytesseract.pytesseract.tesseract_cmd = tesseractFile
-motherDir = "CALIBRI16FIRST"
+motherDir = "TIMESNEWROMAN16FIRST"
 
 def biggestContour(contours):
     biggest = np.array([])

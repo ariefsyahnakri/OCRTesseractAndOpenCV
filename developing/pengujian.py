@@ -6,6 +6,7 @@ from datetime import date, datetime
 
 #tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
 #pytesseract.pytesseract.tesseract_cmd = tesseractFile
+motherDir = "CALIBRI16FIRST"
 
 def biggestContour(contours):
     biggest = np.array([])
@@ -42,8 +43,8 @@ def drawRectangle(img,biggest,thickness):
 
 def imgToText(img,i):
     now = datetime.now()
-    imgFileRes = "ARIAL/ResultDocument{}.jpg".format(i)
-    txtFile = "ARIAL/OCRText{}.txt".format(i)
+    imgFileRes = "{}/ResultDocument{}.jpg".format(motherDir,i)
+    txtFile = "{}/OCRText{}.txt".format(motherDir,i)
 
     # Reading image
     img = cv.imread(img)
@@ -126,8 +127,8 @@ def main():
             break
         elif k % 256 == 32:
             # SPACE pressed
-            imgFile = "ARIAL/UnwrappedDocument{}.jpg".format(i)
-            imgFileRaw = "ARIAL/WrappedDocument{}.jpg".format(i)
+            imgFile = "{}/UnwrappedDocument{}.jpg".format(motherDir,i)
+            imgFileRaw = "{}/WrappedDocument{}.jpg".format(motherDir,i)
             cv.imwrite(imgFile,img)
             cv.imwrite(imgFileRaw,wrapped)
             print("{} written".format(imgFileRaw))

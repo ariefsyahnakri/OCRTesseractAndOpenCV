@@ -42,13 +42,14 @@ def drawRectangle(img,biggest,thickness):
 
 def imgToText(img):
     now = datetime.now()
-    imgFile = now.strftime("Gambar %d/%m/%Y %H:%M:%S").replace(":", "-") + ".png"
+    imgFileRaw = now.strftime("Gambar Raw %d/%m/%Y %H:%M:%S").replace(":", "-") + ".jpg"
+    imgFileRes = now.strftime("Gambar Res %d/%m/%Y %H:%M:%S").replace(":", "-") + ".jpg"
     txtFile = now.strftime("Text %d/%m/%Y %H:%M:%S").replace(":", "-") + ".txt"
-    cv.imwrite(imgFile,img)
-    print("{} written".format(imgFile))
+    cv.imwrite(imgFileRaw,img)
+    print("{} written".format(imgFileRaw))
 
     # Reading image
-    img = cv.imread(imgFile)
+    img = cv.imread(imgFileRaw)
 
     # Color2Gray process
     imgGrey = cv.cvtColor(img,cv.COLOR_RGB2GRAY)
@@ -76,14 +77,14 @@ def imgToText(img):
                 cv.rectangle(img, (x, y), (w + x, h + y), (0, 0, 255), 3)
                 cv.putText(img, b[11], (x, y), cv.FONT_HERSHEY_COMPLEX, 1, (50, 50, 255), 2)
 
-
+    cv.namedWindow('Hasil')
     cv.imshow('Hasil',thresh)
     cv.waitKey(0)
     cv.destroyAllWindows
 
 
-    cv.imwrite(imgFile,thresh)
-    print("{} written".format(imgFile))
+    cv.imwrite(imgFileRes,thresh)
+    print("{} written".format(imgFileRes))
 
     with open(txtFile, 'w+') as f:
         f.write(textOCR)
@@ -104,6 +105,7 @@ def main():
         unsharpMasking = cv.addWeighted(imgGray, 1 + 1.5, gaussianFilter, -1.5, 0)
         ret, thresh = cv.threshold(unsharpMasking, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
         contours, hierarchy = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+        #cv.drawContours(rgb, contours, -1, (0, 255, 0), 10)
 
         w, h = 480, 640
         # Finding biggest contour

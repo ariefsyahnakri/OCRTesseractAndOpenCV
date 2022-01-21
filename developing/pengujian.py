@@ -40,61 +40,55 @@ def drawRectangle(img,biggest,thickness):
     cv.putText(img, 'Objek ditemukan!', (biggest[0][0][0], (biggest[0][0][1])-10), cv.FONT_HERSHEY_COMPLEX, 0.5, (0, 255, 0), 1)
     return img
 
-def imgToText(img):
+def imgToText(img,i):
     now = datetime.now()
-    imgFileRaw = now.strftime("Gambar Raw %d/%m/%Y %H:%M:%S").replace(":", "-") + ".jpg"
-    imgFileRes = now.strftime("Gambar Res %d/%m/%Y %H:%M:%S").replace(":", "-") + ".jpg"
-    txtFile = now.strftime("Text %d/%m/%Y %H:%M:%S").replace(":", "-") + ".txt"
-    cv.imwrite(imgFileRaw,img)
-    print("{} written".format(imgFileRaw))
+    imgFileRes = "ARIAL/ResultDocument{}.jpg".format(i)
+    txtFile = "ARIAL/OCRText{}.txt".format(i)
 
     # Reading image
-    img = cv.imread(imgFileRaw)
+    img = cv.imread(img)
 
     # Color2Gray process
-    imgGrey = cv.cvtColor(img,cv.COLOR_RGB2GRAY)
+    #imgGrey = cv.cvtColor(img,cv.COLOR_RGB2GRAY)
 
     # Unsharp masking process
-    gaussianFilter = cv.GaussianBlur(imgGrey, (11,11), 10)
-    unsharpMasking = cv.addWeighted(imgGrey, 1+1.5, gaussianFilter, -0.5, 0)
+    #gaussianFilter = cv.GaussianBlur(imgGrey, (21,21), 10)
+    #unsharpMasking = cv.addWeighted(imgGrey, 2.0, gaussianFilter,-1.0 , 0)
 
     # Otsu thresholding process
-    ret, thresh = cv.threshold(unsharpMasking, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
+    #ret, thresh = cv.threshold(unsharpMasking, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 
     #Tesseract process
-    textOCR = pytesseract.image_to_string(thresh, lang='eng')
+    #hImg,wImg, = img.shape
+#     boxes = pytesseract.image_to_data(img)
+#     for x,b in enumerate(boxes.splitlines()):
+#         if x!=0:
+#             b=b.split()
+#             print(b)
+#             if len(b)==12:
+#                 x,y,w,h = int(b[6]),int(b[7]),int(b[8]),int(b[9])
+#                 cv.rectangle(img,(x,y),(w+x,h+y),(0,0,255),3)
+#                 cv.putText(img,b[11],(x,y),cv.FONT_HERSHEY_COMPLEX,1,(50,50,255),2)
+    
+    textOCR = pytesseract.image_to_string(img, lang='eng')
 
 
-    ## Drawing rectangle on picture for analysis
-    height, width = img.shape
-    boxes = pytesseract.image_to_data(img)
-    for x, b in enumerate(boxes.splitlines()):
-        if x != 0:
-            b = b.split()
-            print(b)
-            if len(b) == 12:
-                x, y, w, h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
-                cv.rectangle(img, (x, y), (w + x, h + y), (0, 0, 255), 3)
-                cv.putText(img, b[11], (x, y), cv.FONT_HERSHEY_COMPLEX, 1, (50, 50, 255), 2)
-
-    cv.namedWindow('Hasil')
-    cv.imshow('Hasil',thresh)
-    cv.waitKey(0)
-    cv.destroyAllWindows
-
-
-    cv.imwrite(imgFileRes,thresh)
+    cv.imwrite(imgFileRes,img)
     print("{} written".format(imgFileRes))
-
+    
+    
     with open(txtFile, 'w+') as f:
         f.write(textOCR)
         print("{} written".format(txtFile))
+        
 
 
 def main():
     cam = cv.VideoCapture(0)
     cv.namedWindow('Test')
-
+    
+    i = 0 
+    
     while True:
         red, img = cam.read()
         img = cv.transpose(img)
@@ -117,7 +111,7 @@ def main():
             pts1 = np.float32(biggest)
             pts2 = np.float32([[0, 0], [w, 0], [0, h], [w, h]])
             matrix = cv.getPerspectiveTransform(pts1, pts2)
-            wrapped = cv.warpPerspective(rgb, matrix, (w, h))
+            wrapped = cv.warpPerspective(thresh, matrix, (w, h))
             wrapped = wrapped[20:wrapped.shape[0] - 20, 20:wrapped.shape[1] - 20]
         else:
             rgb = rgb.copy()
@@ -132,7 +126,14 @@ def main():
             break
         elif k % 256 == 32:
             # SPACE pressed
-            imgToText(wrapped)
+            imgFile = "ARIAL/UnwrappedDocument{}.jpg".format(i)
+            imgFileRaw = "ARIAL/WrappedDocument{}.jpg".format(i)
+            cv.imwrite(imgFile,img)
+            cv.imwrite(imgFileRaw,wrapped)
+            print("{} written".format(imgFileRaw))
+            print("{} written".format(imgFile))
+            imgToText(imgFileRaw,i)
+            i += 1 
 
 
 if __name__ == "__main__":

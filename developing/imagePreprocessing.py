@@ -85,7 +85,7 @@ def image():
     imgBlank = np.zeros((heightImg, widthImg, 3), np.uint8)
 
 
-    path = "/home/pi/Documents/arief/github/OCRTesseractAndOpenCV/picts/opencv_frame_22.png"
+    path = "/home/pi/Documents/arief/github/OCRTesseractAndOpenCV/developing/ARIAL/UnwrappedDocument0.jpg"
     img = cv2.imread(path)
     img = cv2.resize(img,(widthImg,heightImg))
 
@@ -111,15 +111,15 @@ def image():
         pts1 = np.float32(biggest)
         pts2 = np.float32([[0, 0],[widthImg, 0], [0, heightImg],[widthImg, heightImg]])
         matrix = cv2.getPerspectiveTransform(pts1,pts2)
-        imgWarpColored = cv2.warpPerspective(img, matrix,(widthImg,heightImg))
+        imgWarpColored = cv2.warpPerspective(imgThres, matrix,(widthImg,heightImg))
+        
+
+        imgWDilated = cv2.dilate(imgWarpColored,None,iterations=2)
 
 
-    imgDilated = cv2.dilate(imgWarpColored,None,iterations=2)
 
 
-
-
-    imageArray = ([img, imgGrey,imgBlur,imgSharp],[imgThres,imgBigContour,imgWarpColored,imgDilated])
+    imageArray = ([img, imgGrey,imgBlur,imgSharp],[imgThres,imgBigContour,imgWarpColored,imgWDilated])
 
     lables = [["Original", "Gray", "Gaussian Filter", "Image Sharping"],
               ["Image Sharping","Image Big Contour","Warp Colored","Dilated"]]
@@ -176,7 +176,7 @@ def camera():
                 break
             elif k%256 == 32:
                 # SPACE pressed
-                img_name = "opencv_frame_{}.png".format(img_counter)
+                img_name = "ARIAL/opencv_frame_{}.jpg".format(img_counter)
                 cv2.imwrite(img_name, wrapped)
                 print("{} written!".format(img_name))
                 img_counter += 1
@@ -184,7 +184,7 @@ def camera():
 
 
 if __name__ == "__main__":
-    #image()
-    camera()
+    image()
+    #camera()
 
 

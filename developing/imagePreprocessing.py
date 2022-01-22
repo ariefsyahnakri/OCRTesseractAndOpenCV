@@ -80,21 +80,27 @@ def drawRectangle(img, biggest, thickness):
 
 
 def image():
-    heightImg = 640
-    widthImg = 480
+    heightImg = 1280
+    widthImg = 720
     imgBlank = np.zeros((heightImg, widthImg, 3), np.uint8)
 
 
-    path = "/home/pi/Documents/arief/github/OCRTesseractAndOpenCV/developing/ARIAL/UnwrappedDocument0.jpg"
+    path = "TIMESNEWROMAN16FIRST/UnwrappedDocument0.jpg"
     img = cv2.imread(path)
     img = cv2.resize(img,(widthImg,heightImg))
+    kernel = np.ones((7, 7), np.uint8)
 
     imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    imgBlur = cv2.GaussianBlur(imgGrey,(21,21),10) ## Gaussian Filter
-    imgSharp = cv2.addWeighted(imgGrey, 2.0, imgBlur, -1.0, 0)
+    imgBlur = cv2.GaussianBlur(imgGrey,(11,11),10) ## Gaussian Filter
+    imgSharp = cv2.addWeighted(imgGrey, 1.0+3.0, imgBlur, -3.0, 0)
+
+    # imgEro = cv2.erode(imgSharp, kernel, iterations=1)
+    # imgDila = cv2.dilate(imgSharp, kernel, iterations=1)
 
     ret, imgThres = cv2.threshold(imgSharp,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    # imgEro = cv2.erode(imgThres, kernel, iterations=1)
+    # imgDila = cv2.dilate(imgThres, kernel, iterations=1)
 
     ## FIND CONTOURS
 
@@ -126,10 +132,17 @@ def image():
 
     stackedImage = stackImages(imageArray,0.75,lables)
 
-    textOCR = pytesseract.image_to_string(imgThres, lang='eng')
+    #textOCR = pytesseract.image_to_string(imgThres, lang='eng')
     #print("Hasil OCR:  {}".format(textOCR))
 
-    cv2.imshow("Hasil",stackedImage)
+    #cv2.imshow("Hasil",stackedImage)
+    cv2.imshow("Original",img)
+    cv2.imshow("Blur",imgBlur)
+    cv2.imshow("Sharp", imgSharp)
+    cv2.imwrite('sharpingnyoba.jpg',imgSharp)
+    cv2.imshow("Threshold", imgThres)
+    # cv2.imshow("Erosion", imgEro)
+    # cv2.imshow("Dilatation", imgDila)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     

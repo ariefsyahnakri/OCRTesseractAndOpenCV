@@ -87,13 +87,17 @@ def imgToText(img,i):
 def main():
     cam = cv.VideoCapture(0)
     cv.namedWindow('Test')
-    
+
+    heightImg = 1280
+    widthImg = 720
+
     i = 0 
     
     while True:
         red, img = cam.read()
         img = cv.transpose(img)
         img = cv.flip(img, flipCode=0)
+        img = cv.resize(img,(widthImg,heightImg))
         rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         imgGray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
         gaussianFilter = cv.GaussianBlur(imgGray, (3, 3), 10)
@@ -102,7 +106,7 @@ def main():
         contours, hierarchy = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
         #cv.drawContours(rgb, contours, -1, (0, 255, 0), 10)
 
-        w, h = 480, 640
+        w, h = 720,1280
         # Finding biggest contour
         biggest, maxArea = biggestContour(contours)
         if biggest.size != 0:

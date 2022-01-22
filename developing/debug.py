@@ -1,7 +1,25 @@
-from datetime import date,datetime
-
-now = datetime.now()
-text = now.strftime("Gambar %d/%m/%Y %H:%M:%S").replace(":","-")+ ".jpg"
+import cv2 as cv 
 
 
-print(text)
+def main():
+    cam = cv.VideoCapture(0)
+    cam.set(cv.CAP_PROP_FRAME_WIDTH, 2464)
+    cam.set(cv.CAP_PROP_FRAME_WIDTH,3280)
+    cv.namedWindow("Coba")
+
+
+    while True: 
+        ret, img = cam.read()
+
+
+        cv.imshow('Coba', img)
+        k = cv.waitKey(1)
+        if k % 256 == 27:
+            # ESC pressed
+            print("Escape hit, closing...")
+            break
+
+        
+
+if __name__ == "__main__":
+    main()

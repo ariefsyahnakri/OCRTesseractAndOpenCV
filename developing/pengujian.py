@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 #tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
 #pytesseract.pytesseract.tesseract_cmd = tesseractFile
-motherDir = "TIMESNEWROMAN16FIRST"
+motherDir = "CALIBRI16FIRST"
 
 def biggestContour(contours):
     biggest = np.array([])
@@ -46,8 +46,12 @@ def imgToText(img,i):
     imgFileRes = "{}/ResultDocument{}.jpg".format(motherDir,i)
     txtFile = "{}/OCRText{}.txt".format(motherDir,i)
 
+
+    h = 3508
+    w = 2480
     # Reading image
     img = cv.imread(img)
+    img = cv.resize(img,(w,h))
 
     # Color2Gray process
     #imgGrey = cv.cvtColor(img,cv.COLOR_RGB2GRAY)
@@ -86,27 +90,27 @@ def imgToText(img,i):
 
 def main():
     cam = cv.VideoCapture(0)
+    cam.set(cv.CAP_PROP_FRAME_WIDTH, 2464)
+    cam.set(cv.CAP_PROP_FRAME_WIDTH,3280)
     cv.namedWindow('Test')
 
-    heightImg = 1280
-    widthImg = 720
+    
 
-    i = 0 
+    i = 1
     
     while True:
         red, img = cam.read()
         img = cv.transpose(img)
         img = cv.flip(img, flipCode=0)
-        img = cv.resize(img,(widthImg,heightImg))
         rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         imgGray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-        gaussianFilter = cv.GaussianBlur(imgGray, (3, 3), 10)
-        unsharpMasking = cv.addWeighted(imgGray, 1 + 1.5, gaussianFilter, -1.5, 0)
+        gaussianFilter = cv.GaussianBlur(imgGray, (11,11), 10)
+        unsharpMasking = cv.addWeighted(imgGray, 1.0+3.0, gaussianFilter, -3.0, 0)
         ret, thresh = cv.threshold(unsharpMasking, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
         contours, hierarchy = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
         #cv.drawContours(rgb, contours, -1, (0, 255, 0), 10)
 
-        w, h = 720,1280
+        w, h, c = img.shape
         # Finding biggest contour
         biggest, maxArea = biggestContour(contours)
         if biggest.size != 0:

@@ -53,29 +53,10 @@ def imgToText(img,i):
     img = cv.imread(img)
     img = cv.resize(img,(w,h))
 
-    # Color2Gray process
-    #imgGrey = cv.cvtColor(img,cv.COLOR_RGB2GRAY)
-
-    # Unsharp masking process
-    #gaussianFilter = cv.GaussianBlur(imgGrey, (21,21), 10)
-    #unsharpMasking = cv.addWeighted(imgGrey, 2.0, gaussianFilter,-1.0 , 0)
-
-    # Otsu thresholding process
-    #ret, thresh = cv.threshold(unsharpMasking, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
-
-    #Tesseract process
-    #hImg,wImg, = img.shape
-#     boxes = pytesseract.image_to_data(img)
-#     for x,b in enumerate(boxes.splitlines()):
-#         if x!=0:
-#             b=b.split()
-#             print(b)
-#             if len(b)==12:
-#                 x,y,w,h = int(b[6]),int(b[7]),int(b[8]),int(b[9])
-#                 cv.rectangle(img,(x,y),(w+x,h+y),(0,0,255),3)
-#                 cv.putText(img,b[11],(x,y),cv.FONT_HERSHEY_COMPLEX,1,(50,50,255),2)
+    kernel = np.ones((5, 5), np.uint8)
+    img = cv.dilate(img,kernel,iterations=1)
     
-    textOCR = pytesseract.image_to_string(img, lang='eng')
+    textOCR = pytesseract.image_to_string(img, lang="ind")
 
 
     cv.imwrite(imgFileRes,img)
@@ -97,7 +78,7 @@ def main():
     
 
     i = 1
-    
+    print(motherDir)
     while True:
         red, img = cam.read()
         img = cv.transpose(img)

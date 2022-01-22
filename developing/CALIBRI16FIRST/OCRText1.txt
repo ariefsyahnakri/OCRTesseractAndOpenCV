@@ -1,10 +1,10 @@
 CALIBRI UKURAN FONT 16 CAPITAL
-ABGCDEFGHIJKLMNGPQRSTUVWXYZ
+ABCOEFGHIJKCLMNOPORSTUVWXTYZ
 0987654321
 
-Cation ukuran font 16 kecil
-abcdefghijkimnopaqraluywxyz
-09878684321
+calbrl ukuran font 18 kecil
+abcdefghijkimnoparstuvwxyi
+0987654321
 
 Dokumen
 
@@ -16,11 +16,11 @@ Bapak
 
 Indonesia
 
-Kami mangundang Bapak/|bu siswa kelas X untuk menghadiri
-Rapal Siswa Baru.
+Kami mengundang Bapakibu siswa kelas X untuk menghadin
+Rapat Siswa Baru.
 
-T-Shirt OR Size XL
+T-Shirt OR Sizs XL
 
-Dengan ini diberitahukan dengan horrmal bahwa pada han |ni
-aliran lisink terpaksa diputus.
+Dengan ini dibenlahukan dengan hormat bahwa pada hari ini
+aliran hstrik terpaksa dipulus,
 

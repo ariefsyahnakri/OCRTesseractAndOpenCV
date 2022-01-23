@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 #tesseractFile = "C:\Program Files\Tesseract-OCR\Tesseract.exe"
 #pytesseract.pytesseract.tesseract_cmd = tesseractFile
-motherDir = "CALIBRI16FIRST"
+motherDir = "FAKERECEIPT16FIRST"
 
 def biggestContour(contours):
     biggest = np.array([])
@@ -70,6 +70,7 @@ def imgToText(img,i):
 
 
 def main():
+   
     cam = cv.VideoCapture(0)
     cam.set(cv.CAP_PROP_FRAME_WIDTH, 2464)
     cam.set(cv.CAP_PROP_FRAME_WIDTH,3280)
@@ -80,7 +81,8 @@ def main():
     i = 1
     print(motherDir)
     while True:
-        red, img = cam.read()
+        red,img = cam.read()
+        #img = cv.resize(img,(2464,3280))
         img = cv.transpose(img)
         img = cv.flip(img, flipCode=0)
         rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
@@ -91,8 +93,8 @@ def main():
         contours, hierarchy = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
         #cv.drawContours(rgb, contours, -1, (0, 255, 0), 10)
 
-        w, h, c = img.shape
         # Finding biggest contour
+        w,h,c = img.shape
         biggest, maxArea = biggestContour(contours)
         if biggest.size != 0:
             biggest = recorder(biggest)
@@ -112,6 +114,7 @@ def main():
         k = cv.waitKey(1)
         if k % 256 == 27:
             # ESC pressed
+            cv.destroyAllWindows()
             print("Escape hit, closing...")
             break
         elif k % 256 == 32:

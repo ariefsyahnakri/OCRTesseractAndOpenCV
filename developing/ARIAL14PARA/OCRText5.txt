@@ -1,0 +1,15 @@
+OPTICAL CHARACTER RECOGNITION
+
+Anal - Opbioal characier recognibon (OCR) edalah proses Konwatai
+gambar hutut manjadi karakter ASCIL yang dioanati okeh komputer
+Gamber huruf yang dumaksud dapat berupa hai! scam dokumen, had
+pont-scrben halaman web, hasil foto, dan lain-aln (Mohammad, Ananta,
+Shngota, A Gharwat, 2014). Salah satu kebutuhan mengapa paru
+korwarai gambar huruf menjadi katakter ASCI adalah karakter ASCN
+memikk! kapasitas penyimpanan yang kebah kaca. Contohnya, suatu
+paragrat di-printsoreen dan disimpan dalam format png. Paragraf terebut
+juga di-copy Gan diumpan dalam fomnat bet Untuk Ne gambar, mesemilik
+"ae 42KD, sedangkan untuk Ig tnkg, mama ipa 1KB, Dar) ain Dang
+lathhal bahwa file gambar skos selalu relauf lebih bear kebenbang
+menyimpan lengang taka ASCI-nye aja
+

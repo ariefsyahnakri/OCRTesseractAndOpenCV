@@ -1,0 +1,16 @@
+OPTICAL CHARACTER RECOGXITION
+
+Times New Roman - Optical character recognition (OUR) adalah
+proses konvorsi gambar huruf menjadi karakter ASCII yang dikenali
+oleh komputer. Gambar huruf yang dimaksud dapat berupa hasi! sam
+Jokumen, hasil pmni-screen halaman web, hasil too, dan lain-lain
+(Muhummad, Anarasa, Shingote, & Ghanwat, 2014), Salah satu
+kebutuhan mengapa perlu konversi gambar huruf menjadi karakter
+ASCW adaluh karakter ASCII memiliki kapasitas penyimpanan yang
+lebih kecil. Contohays, suatu paragraf di-rinsereen dun disimpan
+dalam format png. Paragraf tersebut juga di-cupy dun disimpan dalam
+format ixt Untok file gambar, memiliki sise 42KB, sedangkan untuk
+file teka, mernuliki size IKB. Dad sini bisa terbihar bah wa file gambar
+akun selalu relatif lebih besar ketimbang menyimpan langsung teka
+ASCIl-nya saja.
+

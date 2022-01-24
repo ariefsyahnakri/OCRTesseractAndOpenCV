@@ -1,0 +1,14 @@
+OPTKAL (MA RACTEK RECOGATMON
+
+Calbn - Optical charactes recognition (OCR) adatah proses komen ga rnbam
+urut menjadi karakter ASCU yang dikenal! okeh kom puter, Gambar trarut yang
+dimaksud dapat berup3 hasi gcan dokurnem, Mandi Dlni-tereeh hataman web,
+hasil toto, dan tain-lain (Moharnmad, Anatase, Shingote, & Ghanrwat, 2014).
+balah satu kebutuhan mengapa perlu konverd gambar hucat menjadi karakter
+ASCU adalah karakter ASCI mermiliki kapasitas penyampanan yang kebih hoc,
+Contohnya, suatu paragraf di printecreen dan disamgan dalan format png.
+Paregrat tersebut juga dicopy dan disempan dalam kormat ta. Vertuk Nm
+gambar, memiliki size A2KB, sedangkan untuk fike vehs, menuakki daa TKB, Dari
+sin bisa terlihat bata file gambar akan selalu relatif kebih besar ketkmbaag
+Meryampan langsung teks ASCi-nya saja
+

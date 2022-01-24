@@ -1,0 +1,15 @@
+OPTICAL CHARACTER RECOGNITION
+
+Arial - Optical character reoognrbon (OCR) edalah proses konversi
+gambar huruf menjadi karakter ASCIL yang diana Oleh komputer
+Gambar hund yang dimaksud dapat berupa hasil scan dokumen, hara
+pont-ecngan halaman web, hasil foto, dan Lain-daln (Mohamaenad, Angnra,
+Etungota, 4 Gharwat, 2014) Salah satu kebutuhan mengapa paru
+konversi gambar nurut menjadi karakter ASCII adalah karaktar A3CN
+memnitk! kapasitas penyimpanan yang kebih kecil Contohnya, suatu
+paragrat di-printsoneen dam disimpan dalam format png. Paragraf tersebut
+juga dicopy dan diampan dalam format et Untuk Mie gambar, mermik|
+Hze 42KD, medangkan untuk fig taka, mami ana 1KB, Danh koi Dana
+barihgi bahwa fis gambar bkan setalu relatif kabin besar kembang
+menyimpan langsung teks ASCI-nye saja.
+

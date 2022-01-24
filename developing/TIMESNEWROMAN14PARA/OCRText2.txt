@@ -1,0 +1,14 @@
+OFTICAL CHARACTER RECOGNITILON
+
+Times New Roman - Optical chmnserer recognition (OCR) adalah proses
+kamversi gambar huruf menjadi karakter ASCI yang dikenali oke komputer.
+Gambay huruf yang dimaksud dapat berupi busil samm dokumen, basil pebot-
+scteen halaman web, hasil (toto, dun Lain kun (Mohmrosd, Anarase, Sbingote, d
+Ghanwat 2014), Salah saty kebutuhan mengapa perlu korverwi gambar huruf
+menjadi karakter ASCII adalah karicter ASC1 memdiki kapasitas penyunpanaa
+yang febib kecil Contohnya susru perwarat di-prinsoreen dan duimpan dalam
+Tormai png. Paragraf tersebut juga di-copy dan disimpan dalara Koma bei. Untuk
+(le gambar, memiliki kes 42K D, sedangkan untuk file teka, ana Uda sum ) KB.
+Dan ena bea terlihat bahwa (le gambar ak dn seluku relasi bebril besar eetum bang
+menyimpan langsung teka ASCI nya “aga
+

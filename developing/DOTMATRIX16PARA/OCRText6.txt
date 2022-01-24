@@ -1,0 +1,17 @@
+OPTICAL CHARACTER REC@ONTTION
+
+Dot Matrix - Optical ohsraoter recognition (OCD adalah
+proses konversi gambar huruf menjadi karakter ASCIT yang
+dikenali oleh komputer, Gambar hurut yang dimaksud dapat
+berupa hasil scan dokumen, hasil print-serean halaman meb,
+hasil foto, dan lain-lain (Mohammad, Anarase, Shingole, &
+GhanWat, 2010, Salah satu kebutuhan mengapa perlu konversi
+gambar huruf menjadi karakter ASCII adalah karakter ASCIJ
+memiliki kapasitar penyimpanan yang lebih kecil. Contohnya,
+suatu psragraf di-—printsoreen dan disimpan dalam format
+png, Paragraf tersebut juga di-copy dan disimpan dalam
+format tc, Untuk file gambar, memiliki si» RKB,
+sedangkan untuk file teks, memiliki size IKB Dari sini bisa
+terlihat bahssa file gambar akan selalu relatif lebih besar
+ketimbang menyimpan langoung keke ASfIl-nya saja,
+

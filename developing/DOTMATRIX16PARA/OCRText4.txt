@@ -1,0 +1,17 @@
+OPTICAL CHARACTER RECOGNITIOM
+
+Dot Matrix - Optical character recognition (OCR) adalah
+proses konbergi gambar huruf menjadi karakter RSCIT yang
+dikenali oleh komputer, Gambar huruf yang dimaksud dapat
+berup3 hasil scan dokumen, hasil print-screen halaman web,
+hasi) foto, Gan lain-lain (rtohamad, Anarase, Shingote, &
+Ghanwat, 20100, Salih satu kebutuhan mengapa perlu konversi
+gambar huruf menjadi karakter ASCLI adalah karakter RSCII
+memiliki kapasitas peryjimpanan yang lebih kecil Contohnya,
+suatu paragraf di-prinisoreen dan disimpan dalam format
+png. Paragrat tersebut juga di-copy dan disimpan dalam
+format teu Untuk tile gambar, memiliki size LKB,
+Sedangkan untuk file teks, memiliki size IKB, Dari sini bisa
+terlihat bahwa file gambar akan selalu relatif lebih besar
+ketimbang menulapan langtung teka ASCT-nya gaya,
+

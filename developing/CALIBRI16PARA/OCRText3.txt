@@ -1,0 +1,16 @@
+OPTICAL CHARACTER RECOGNITION
+
+Calibti - Optical character rmcogniion (OCA) adalah proses
+konversi gambar huruf menjadi karakter ASCI yang dikenal oleh
+komputer. Gamber huruf yang dimaksud dapat berupa hasil scan
+Gaokumen, hasil print-screen halaman web, hasil foto, dan lain-lain
+(Mohammad, Anarase, Shingote, & Ghanwat, 2014). Salah satu
+kebutuhan mengapa perlu kanwersi gambar huruf menjadi karakter
+ASCII adalah karakter ASCII memiliki kapasitas penyimpanan yang
+lebih kecil. Contohnya, suatu paragraf di-printsenean dan diumpan
+dalarn format png. Paragraf tersebut juga dl-copy dan disimpan dalam
+format txt, Untuk tile gambar, memilik! sire 42KB, sedangkan untuk
+Nie teks, memiliki sire 1KB, Dar sini bisa terlihat bahwa file gambar
+akan selalu relatif lebih besar ketimbang menyimpan langsung teks
+ASCI |-nya saja,
+

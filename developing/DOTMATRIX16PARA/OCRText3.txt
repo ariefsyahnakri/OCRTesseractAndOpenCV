@@ -1,0 +1,17 @@
+OPTICAL CHARACTER RECOGNITIOM
+
+Dot Matrix - Optical aharacter reoognikion COCRD adalah
+proses konversi gambar hurut menjadi karakter ASCTI yang
+dikenali Oleh komputer. Gambar huruf yang dimaksud dapat
+berup$ hasil soin dokumen, hasil print-soreen halaman web,
+hasil foto, dan Jain-lain (Mohammad, Anarase, Shingote, &
+Ghanwat, 2010, Salah satu kebuluhan mengapa perlu konversi
+Gambar huruf menjadi karakter ASCIT adalah karakter RSCTI
+memiliki kapasitas penyimpanan yang lebih kecil, Contohnya,
+JUMU paragraf di-prinisoreen dan disimpan dalam format
+png. Paragraf tersebut juga di-vopy dan disimpan dalam
+tormat txt Untuk dila gambar, memiliki size 42K,
+Eedangkan untuk file teks, memiliki tize IKB, Dari sini bisa
+terlihat bahwa file gambar akan relalu relatif lebih besar
+ketinbang menyimpan langtung teks ASCII -nya gaja,
+

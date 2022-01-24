@@ -1,0 +1,14 @@
+OPTICAL CHARACTER RECOGANTITION
+
+Times New Rosmao - Optical character recognition (OCE) adalah proses
+konversi gambar huruf menjad karakter ASCTI yang dikonah okt kompeter
+Gambar huruf yang donaksud dapa berupa husal sera dokarmen, hasil pem
+9cteen Ialaman web, basil foto, dan lasn ding (Mahara mad, Anansa, Shungow, &
+Charm ot, 2014) Salah satu kebutuhan mengapa perlu konversi pembar bung
+menjadi karakter ASC1I adalah karakler ASC IN memilik kapasitas penyempanah
+yang lebih kecU. Contohnya, susto paragraf di-printsereon dia diawmpan dalan
+Iormat png. Paragraf tersebut juga di-copy dam da ampun dadam format Oct. Uruuk
+file gambar, memiliki size 42K.B, sedangkan untuk File teka memilik ia IKB.
+Dawn air bisa becihat bahwa File gam bar akan selalu celati | lebah besar katambang
+menyimpan langsung teks ASC nya saja,
+

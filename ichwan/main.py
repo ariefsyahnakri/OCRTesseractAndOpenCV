@@ -1,7 +1,8 @@
 import cv2 as cv
 import imutils
 import numpy as np
-from keras.models import load_model
+import tensorflow as tf
+from tf.keras.models import load_model
 import tkinter as tk
 from tkinter import*
 from PIL import Image, ImageTk

@@ -1,0 +1,17 @@
+OPTICAL CHARACTER RECOGNITION
+
+Anal - Optical character recognition (OCR) adalah proses
+konversi gambar muruf menjadi karakter ASCII yang dikenal
+Geh komputer, Gambar huruf yang dimaksud dapat berupe haxd
+scan Gokumen, hasil print-screen halaman web, hasil foto, dan
+lain-lain (Mohammad, Anarase, Shingote, & Ghanwat, 2014),
+Salah satu kebutuhan mengapa paru konversi gambar huruf
+menjadi karakter ASCII adalah karakler ASCII memilik
+kapasitas penyimpanan yang lebih kecil. Contohnya, suatu
+paragraf di-pnintscreen dan disimpan dalam format png.
+Paragraf tersebut juga di-copy dan disimpan dalam format .bet
+Umuk fe gambar, mernilikh size 42KBD, sedangkan untuk file
+lek, memilik size 1KD Dari sini bisa terlihat bahwa fi gambar
+akan selalu relatif lebeh besar ketimbang menyimpan langaung
+lek3 ASC!I-nya saja.
+

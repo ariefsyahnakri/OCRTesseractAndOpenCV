@@ -1,0 +1,14 @@
+DPTKAL CHARATTER RECOGN POM
+
+Ca libr - Optical character recognrtion (OCRJ adalah proses komersi parabar
+huruf menjadi karakter ASCN yang dikenal! oleh komputer, Gambar waru yang
+dimaksud dapat berupa hasil scan dokumen, hand peini- neon halaman web,
+hawl foto, dan lam-lan (Mohammad, Anarase, Shingote, & Ghamwat, 2014)
+Salah satu kebutuhan mengapa perlu konversi gambar huruf menjadi karakter
+AMI adalah karakter ASCI memiliki kapasitas penyampanan yang kebih heel,
+Contohnya, tuatu paragraf di-erinticreen dan disimpan dalan format png.
+Parograt tersebut Juga dicopy dan dkmoan dalam format ba. Untuk Tip
+62 mbat, memilik sir 4218, sedangkan untuk the velk, memuaki sie KE, Dari
+sin! bisa terlihat batwa file gambar akan selalu relatif lebih besar lortkmbang
+menyimpan langsing tks ASC il-nys saja
+

@@ -1,0 +1,16 @@
+OPTICAL CHARACTER RECOGNITION
+
+Times New Roman - Optical charactur recognidon (OCR) adalah
+proses konversi gambar huruf menjadi karakter ASCII yang dikenali
+oleh komputer. Gambar huruf yang dimaksud dapul berupa hasi) scan
+dokumen, husil printsscreon halamun web, hasil fo, dan lain-kain
+(Mohammad, Anaraso, Shingote, & Ghanwat, 2014), Salah satu
+kebutuhan mengapa perlu konversi gambar huruf menjedi karakuer
+ASCT adalah karakter ASCU memiliki kapasitas penyimpanan yang
+lebih kocil. Contohnya, suatu paragraf di-peintsereen dun disimpan
+dalam formut png, Paragraf tervebut juga di-copy dun diimpan dalam
+format 4x Untuk file gambar, memuliki size 42K B, sedangkan untuk
+file (uks, memiliki siae IKB, Dari sini bisa terlihat bahwa file pambar
+akum selulu relatif lebih besar ketimbang menyimpan langung teks
+ASC1I-nya saja.
+

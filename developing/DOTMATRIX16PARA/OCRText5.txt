@@ -1,0 +1,17 @@
+OPTICML CMARACTEM KECOGNITIOM
+
+Dot Matrix - Opticsl character recognition (OCD dalah
+proses konversi gambar huruf menjadi karakter ASCIT yang
+dikenali oleh komputer. Gambar huruf yang dimaksud dapat
+berupa hasil sean dokumen, hasil print-soreen halaman meby
+hasil foto, dan lain-lain (tohammad, Anarase, Shingote, &
+Ghanwat, 2010, Salah satu kebutuhan mengapa perlu konersi
+gambar fturuf menjadi karjkter ASCIT adalah karakter ASCII
+memiliki kapasitas penyimpanan yang lebih kecil, Contohnya,
+suatu paragraf di-printsoreen dan disimpan dalam format
+png. Paragrat tersebut juga di-copy dan disimpan dalam
+format txt, Untuk tile gambar, memiliki size RXO,
+sedangkan untuk file deks, memiliki size IKB, Dari sini bisa
+terlihat bahwa file gambar akan selalu relatif lebih besar
+ketimbang menyitapan Jangciung teks ASCII-nya aja,
+

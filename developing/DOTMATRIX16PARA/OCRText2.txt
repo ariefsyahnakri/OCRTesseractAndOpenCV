@@ -1,0 +1,17 @@
+OPTICAL CHARACTER RECOGNITIOW
+
+Dot Matrix - Optical oharaoter recognition CP) adalah
+proses konversi gambar huruf menjadi karakter ASCIT yang
+dikenali oleh komputer, Gambar huruf yang dimaksud dapat
+berupa hasil scan dokumen, hasil print-screen halaman web,
+hasil foto, dan Jain-lain Mohammad, Anarase, Shingote, 4
+Ghanwat, 2010, Salah satu kebutuhan mengapa perlu konversi
+Gambar huruf menjadi karakter ASCIT adalah karakter RSCII
+memiliki kapasitas peryjimpanan yang lebih kecil, Comtohnya,
+suatu paragral di-printscreen dan disimpan dalam format
+png, Paragraf tersebut juga di-oopy dan disimpan dalam
+format Axtu Untuk file gambar, memiliki sire 10KB,
+Sedangkan untuk file teka, memiliki size IKO, Dari sini bira
+terlihat bahwa file gambar akan selalu relatif lebih besar
+ketimbang menyimpan langzung teks ASCT-nys taja,
+

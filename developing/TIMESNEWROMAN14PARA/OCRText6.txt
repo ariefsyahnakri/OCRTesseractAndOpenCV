@@ -1,0 +1,14 @@
+OPTICAL LC HARACTER RE OOG NITION
+
+Times New Roman - Optical charnetar recognlinoo (OCR) axialuh proses
+konversi gambar hutuf menjadi karakter ASC II yang dikenal oleh kompater.
+Uambar huruf yang danaksud dapat berupa hasul sora dokumen, hasil pot
+ac oco halaman web. basil foto, dan Iwo-lwa (Mohbaramad, Ananwe. Shingoas, &
+Ohanwat, 20) Salah satu kebutuhan mengepa perlu komveryi gambar huruf
+menjadi karakter ASC 7 adalah kamakker AS CTL ment dki karparstacs pen 615 patok
+yang lebih kecil. Contohnya, muadu paragraf diprumserean dan disimpan dalam
+format png. Paragraf tersebut juga di-oopy dan disampan dalam fbermat ot. Umuk
+(le pambar, mem Uki sine ATK, sedangkan unbuk Fike teka. memilik sun KB
+Dari gt bisw terlihat bahwa (ik: gwmbar akar selmu relatif lebah besar ketimbang
+menyimpas Jangsung teks ASCII-nya saja
+

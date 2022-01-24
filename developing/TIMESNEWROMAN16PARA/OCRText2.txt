@@ -1,0 +1,16 @@
+OPTICAL CHARACTER RECOGNITION
+
+Times New Roman - Optical character recognition (OCR) adulah
+proses konversi gambar huruf menjadi karakter ASCII yang dikenal!
+oleh komputer, Gambar huruf yang dimaksud daput berupa hasil scan
+dokumen, hasil prini-seroon halaman web, hasil Foto, dan lain-lain
+(Mohummad, Anarase, Shingote, & Ghanwat, 2014). Salah satu
+kebutuhan mengapa perlu konversi gambar huruf menjadi karakter
+ASCW adulah karakter ASCIL memiliki kapasitas penyimpanan yang
+lebih kecil. Contohnya, suatu pwragrad' di-printseroon dan disimpan
+dalam formal png, Paragraf tersebui juga di-oopy dun disimpan dalar
+formal txt Untuk filo gambar, memiliki «Loe 42KB, sodangkan untuk
+file teks, memiliki gizs 1KB. Darf sini bisa terlihat bahwa file gambar
+akan selalu relatif lebih besar keimbang menyimpan langsung teks
+ASC I-nya saja.
+
